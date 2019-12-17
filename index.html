@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Local Journal</title>
+    <style>
+        nav{
+            text-align: center;
+        }
+        #journalDiv{
+            display: block;
+        }
+        #writeDiv{
+            display: none;
+        }
+        #readDiv{
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <!-- NAVBAR -->
+    <nav>
+        <a href="#journalDiv" id="journalNavBtn">journal</a>
+        <a href="#writeDiv" id="writeNavBtn">write</a>
+        <a href="#readDiv" id="readNavBar">read</a>
+    </nav>
+    <div id="journalDiv">
+        <h1>Welcome to my Local Journal!</h1>
+    </div>
+    <div id="writeDiv">
+        <h2>Write away!</h2>
+        <textarea id="entry"></textarea>
+        <button id="saveBtn">Save</button>
+    </div>
+    <div id="readDiv">
+        <h2>Read away!</h2>
+        <div id="displayEntries"></div>
+    </div>
+
+    <script>
+        const journalNavBtn = document.querySelector("#journalNavBtn");
+        const writeNavBtn = document.querySelector("#writeNavBtn");
+        const readNavBar = document.querySelector("#readNavBar");
+        const journalDiv = document.querySelector("#journalDiv");
+        const writeDiv = document.querySelector("#writeDiv");
+        const readDiv = document.querySelector("#readDiv");
+
+        // setting up onclick funcs
+        journalNavBtn.onclick = () => {
+            journalDiv.style.display = 'block';
+            writeDiv.style.display = 'none';
+            readDiv.style.display = 'none';
+        };
+        writeNavBtn.onclick = () => {
+            journalDiv.style.display = 'none';
+            writeDiv.style.display = 'block';
+            readDiv.style.display = 'none';
+        };
+        readNavBar.onclick = () => {
+            journalDiv.style.display = 'none';
+            writeDiv.style.display = 'none';
+            readDiv.style.display = 'block';
+        };
+
+        
+        // not sure what I'm going to do with this yet, but it seems like a good idea
+        window.onload = () => {
+            console.log('window loaded');
+        };
+    </script>
+</body>
+</html>
