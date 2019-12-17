@@ -2,6 +2,18 @@ const express = require('express');
 const app = express();
 const port = 8080;
 const fs = require('fs');
+// the next 4 are used for the local json database
+const low = require('lowdb');
+const FileSync = require('lowdb/adapters/FileSync');
+// the next 3 are to declare the db json file and to init the db 
+const adapter = new FileSync('journal_data.json')
+const db = low(adapter)
+// this sets up the objects that you will write to (like tables in relational database)
+db.defaults({ entries: [], otherInfo: {} }).write();
+
+// getting everything from db post 
+let temp = db.get('entries').value();
+console.log(temp);
 
 app.get('/', (req,res) => {
     res.header("Access-Control-Allow-Origin", "*");
@@ -22,6 +34,8 @@ app.post('/saveEntries', (req,res) => { //saveEntries
       );
     console.log("POST /saveEntries hit"); 
     console.log(req.query);
+    // writing the entry to the db 
+    db.get('entries').push( {id:1, text: req.query.entryText}).write();
     res.send(req.query);
 });
 

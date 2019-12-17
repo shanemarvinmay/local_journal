@@ -1,0 +1,17 @@
+{
+  "entries": [
+    {
+      "id": 1,
+      "text": "req.query.entryText"
+    },
+    {
+      "id": 1,
+      "text": "test entry2"
+    },
+    {
+      "id": 1,
+      "text": "test entry3"
+    }
+  ],
+  "otherInfo": {}
+}
