@@ -32,7 +32,7 @@
     </div>
     <div id="writeDiv">
         <h2>Write away!</h2>
-        <textarea id="entry"></textarea>
+        <textarea id="entryText"></textarea>
         <button id="saveBtn">Save</button>
     </div>
     <div id="readDiv">
@@ -47,6 +47,13 @@
         const journalDiv = document.querySelector("#journalDiv");
         const writeDiv = document.querySelector("#writeDiv");
         const readDiv = document.querySelector("#readDiv");
+        const saveBtn = document.querySelector("#saveBtn");
+        
+        // collecting data functions
+        const getSaveEntryParams = () => {
+            const entryText = document.querySelector("#entryText").value;
+            return `entryText=${entryText}`;
+        };
 
         // setting up onclick funcs
         journalNavBtn.onclick = () => {
@@ -64,8 +71,16 @@
             writeDiv.style.display = 'none';
             readDiv.style.display = 'block';
         };
+        saveBtn.onclick = () => {
+            const params = getSaveEntryParams();
+            let xhr = new XMLHttpRequest;
+            xhr.open('POST', `http://localhost:8080/saveEntries?${params}`);
+            xhr.setRequestHeader("Access-Control-Allow-Origin", "*");
+            xhr.setRequestHeader("Access-Control-Allow-Origin", "Origin, X-Requested-With, Content-Type, Accept");
+            xhr.onreadystatechange = function() { if (xhr.readyState>3 && xhr.status==200) { console.log(xhr.responseText); } };
+            xhr.send('ZzzZZZZ');
+        };
 
-        
         // not sure what I'm going to do with this yet, but it seems like a good idea
         window.onload = () => {
             console.log('window loaded');
