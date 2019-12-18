@@ -48,11 +48,13 @@
         const writeDiv = document.querySelector("#writeDiv");
         const readDiv = document.querySelector("#readDiv");
         const saveBtn = document.querySelector("#saveBtn");
+        let pos = null;
         
         // collecting data functions
         const getSaveEntryParams = () => {
             const entryText = document.querySelector("#entryText").value;
-            return `entryText=${entryText}`;
+            console.log(pos);
+            return `entryText=${entryText}&latitude=${pos.latitude}&longitude=${pos.longitude}&accuracy=${pos.accuracy}&timestamp=${pos.timestamp}`;
         };
 
         // setting up onclick funcs
@@ -83,6 +85,21 @@
 
         // not sure what I'm going to do with this yet, but it seems like a good idea
         window.onload = () => {
+            navigator.geolocation.getCurrentPosition( (position)=>
+            {
+                pos = { 
+                    latitude : position.coords.latitude,
+                    longitude : position.coords.longitude,
+                    accuracy : position.coords.accuracy,
+                    timestamp : position.timestamp };
+                    console.log('pos set');
+                    console.log(pos);
+                return( { 
+                    latitude : position.coords.latitude,
+                    longitude : position.coords.longitude,
+                    accuracy : position.coords.accuracy,
+                    timestamp : position.timestamp } );
+            });
             console.log('window loaded');
         };
     </script>

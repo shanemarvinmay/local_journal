@@ -35,7 +35,16 @@ app.post('/saveEntries', (req,res) => { //saveEntries
     console.log("POST /saveEntries hit"); 
     console.log(req.query);
     // writing the entry to the db 
-    db.get('entries').push( {id:1, text: req.query.entryText}).write();
+    db.get('entries').push( 
+        {
+            id: new Date().getTime(), 
+            entryText: req.query.entryText,
+            latitude: req.query.latitude,
+            longitude: req.query.longitude,
+            accuracy: req.query.accuracy,
+            timestamp: req.query.timestamp,
+        }
+        ).write();
     res.send(req.query);
 });
 

@@ -1,16 +1,12 @@
 {
   "entries": [
     {
-      "id": 1,
-      "text": "req.query.entryText"
-    },
-    {
-      "id": 1,
-      "text": "test entry2"
-    },
-    {
-      "id": 1,
-      "text": "test entry3"
+      "id": 1576646833635,
+      "entryText": "Everything seems to be working so this is my first entry, technically. Every entry after this will be personal. I'm glad a took a day to do this alpha version. Hopefully one day I can use this along with much more  data to make sense of my life.",
+      "latitude": "29.9556864",
+      "longitude": "-95.6768256",
+      "accuracy": "853",
+      "timestamp": "1576646507518"
     }
   ],
   "otherInfo": {}
