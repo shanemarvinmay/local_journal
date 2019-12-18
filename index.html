@@ -74,6 +74,7 @@
             readDiv.style.display = 'block';
         };
         saveBtn.onclick = () => {
+            // getting data and sending a post request to save the journal entry 
             const params = getSaveEntryParams();
             let xhr = new XMLHttpRequest;
             xhr.open('POST', `http://localhost:8080/saveEntries?${params}`);
@@ -81,6 +82,8 @@
             xhr.setRequestHeader("Access-Control-Allow-Origin", "Origin, X-Requested-With, Content-Type, Accept");
             xhr.onreadystatechange = function() { if (xhr.readyState>3 && xhr.status==200) { console.log(xhr.responseText); } };
             xhr.send('ZzzZZZZ');
+            // clearing textarea so that it's ready for another journal entry 
+            document.querySelector("#entryText").value = '';
         };
 
         // not sure what I'm going to do with this yet, but it seems like a good idea
